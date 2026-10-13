@@ -59,10 +59,13 @@ export function CommandPalette() {
     { id: "skills", title: "Technical Skills Matrix", category: "Navigation", shortcut: "S", perform: () => jumpTo("skills") },
     { id: "achievements", title: "Honors & Achievements", category: "Navigation", shortcut: "V", perform: () => jumpTo("achievements") },
     { id: "contact", title: "Contact Mayur", category: "Navigation", shortcut: "C", perform: () => jumpTo("contact") },
-    { id: "github", title: "GitHub Profile", category: "Social & Links", shortcut: "↗", perform: () => window.open(personalData.githubUrl, "_blank") },
-    { id: "linkedin", title: "LinkedIn Profile", category: "Social & Links", shortcut: "↗", perform: () => window.open(personalData.linkedinUrl, "_blank") },
-    { id: "resume", title: "Download Resume", category: "Social & Links", shortcut: "PDF", perform: () => window.open(personalData.resumeUrl, "_blank") },
-    { id: "copy-email", title: copied ? "✓ Email Copied!" : "Copy Email Address", category: "Quick Action", shortcut: "Enter", perform: copyEmail }
+    { id: "linkedin", title: "LinkedIn Profile (Mayur Patil)", category: "Social & Links", shortcut: "↗", perform: () => window.open(personalData.linkedinUrl, "_blank") },
+    { id: "github", title: "GitHub Profile (@xenonrocks71)", category: "Social & Links", shortcut: "↗", perform: () => window.open(personalData.githubUrl, "_blank") },
+    { id: "leetcode", title: "LeetCode Profile (xenonrocks_71)", category: "Social & Links", shortcut: "↗", perform: () => window.open(personalData.leetcodeUrl, "_blank") },
+    { id: "twitter", title: "X / Twitter (@MayurPa23149443)", category: "Social & Links", shortcut: "↗", perform: () => window.open(personalData.twitterUrl, "_blank") },
+    { id: "instagram", title: "Instagram Profile (@xenonrocks_71)", category: "Social & Links", shortcut: "↗", perform: () => window.open(personalData.instagramUrl, "_blank") },
+    { id: "resume", title: "Download Resume (Drive PDF)", category: "Social & Links", shortcut: "PDF", perform: () => window.open(personalData.resumeUrl, "_blank") },
+    { id: "copy-email", title: copied ? "✓ Email Copied!" : "Copy Email (mayurkp71@gmail.com)", category: "Quick Action", shortcut: "Enter", perform: copyEmail }
   ];
 
   const filtered = actions.filter((a) =>

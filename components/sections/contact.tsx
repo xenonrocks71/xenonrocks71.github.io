@@ -241,53 +241,116 @@ export const Contact: React.FC = () => {
               </div>
             </div>
 
-            {/* Quick Action Channels Grid */}
-            <div className="grid grid-cols-3 gap-2.5">
-              {/* LinkedIn */}
-              <a
-                href={personalData.linkedinUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 rounded-2xl bg-white/90 dark:bg-[#0d101a]/80 hover:bg-slate-50 dark:hover:bg-white/[0.04] border border-slate-200/90 dark:border-white/10 text-slate-800 dark:text-white transition-all shadow-xs flex flex-col items-center justify-center gap-1.5 group text-center"
-              >
-                <div className="w-8 h-8 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                  </svg>
-                </div>
-                <span className="text-[11px] font-mono font-semibold">LinkedIn</span>
-                <span className="text-[9px] font-mono text-slate-400 group-hover:text-blue-500 transition-colors">Connect ↗</span>
-              </a>
+            {/* Social & Professional Platforms Grid */}
+            <div className="space-y-2">
+              <div className="flex items-center justify-between px-1">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 dark:text-zinc-500 font-semibold">
+                  Professional Profiles & Socials
+                </span>
+                <span className="text-[10px] font-mono text-slate-400 dark:text-zinc-500">
+                  Direct External Links
+                </span>
+              </div>
 
-              {/* GitHub */}
-              <a
-                href={personalData.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 rounded-2xl bg-white/90 dark:bg-[#0d101a]/80 hover:bg-slate-50 dark:hover:bg-white/[0.04] border border-slate-200/90 dark:border-white/10 text-slate-800 dark:text-white transition-all shadow-xs flex flex-col items-center justify-center gap-1.5 group text-center"
-              >
-                <div className="w-8 h-8 rounded-xl bg-slate-100 dark:bg-white/10 text-slate-800 dark:text-white flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <IconRenderer name="github" className="w-4 h-4" />
-                </div>
-                <span className="text-[11px] font-mono font-semibold">GitHub</span>
-                <span className="text-[9px] font-mono text-slate-400 group-hover:text-blue-500 transition-colors">Projects ↗</span>
-              </a>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                {/* LinkedIn */}
+                <a
+                  href={personalData.linkedinUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-2xl bg-white/90 dark:bg-[#0d101a]/80 hover:bg-blue-50/60 dark:hover:bg-blue-950/20 border border-slate-200/90 dark:border-white/10 hover:border-blue-500/40 text-slate-800 dark:text-white transition-all shadow-xs flex flex-col items-center justify-center gap-1.5 group text-center hover:-translate-y-0.5"
+                >
+                  <div className="w-8 h-8 rounded-xl bg-blue-500/10 text-[#0A66C2] flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <IconRenderer name="linkedin" className="w-4 h-4 fill-current" />
+                  </div>
+                  <span className="text-[11px] font-mono font-semibold">LinkedIn</span>
+                  <span className="text-[9px] font-mono text-slate-400 group-hover:text-blue-500 transition-colors truncate max-w-full px-1">
+                    Connect ↗
+                  </span>
+                </a>
 
-              {/* Resume */}
-              <a
-                href={personalData.resumeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 rounded-2xl bg-white/90 dark:bg-[#0d101a]/80 hover:bg-slate-50 dark:hover:bg-white/[0.04] border border-slate-200/90 dark:border-white/10 text-slate-800 dark:text-white transition-all shadow-xs flex flex-col items-center justify-center gap-1.5 group text-center"
-              >
-                <div className="w-8 h-8 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                </div>
-                <span className="text-[11px] font-mono font-semibold">Resume</span>
-                <span className="text-[9px] font-mono text-slate-400 group-hover:text-amber-500 transition-colors">Drive PDF ↗</span>
-              </a>
+                {/* GitHub */}
+                <a
+                  href={personalData.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-2xl bg-white/90 dark:bg-[#0d101a]/80 hover:bg-slate-50 dark:hover:bg-white/[0.05] border border-slate-200/90 dark:border-white/10 hover:border-slate-400/40 text-slate-800 dark:text-white transition-all shadow-xs flex flex-col items-center justify-center gap-1.5 group text-center hover:-translate-y-0.5"
+                >
+                  <div className="w-8 h-8 rounded-xl bg-slate-100 dark:bg-white/10 text-slate-800 dark:text-white flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <IconRenderer name="github" className="w-4 h-4" />
+                  </div>
+                  <span className="text-[11px] font-mono font-semibold">GitHub</span>
+                  <span className="text-[9px] font-mono text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors truncate max-w-full px-1">
+                    @xenonrocks71 ↗
+                  </span>
+                </a>
+
+                {/* LeetCode */}
+                <a
+                  href={personalData.leetcodeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-2xl bg-white/90 dark:bg-[#0d101a]/80 hover:bg-amber-50/60 dark:hover:bg-amber-950/20 border border-slate-200/90 dark:border-white/10 hover:border-amber-500/40 text-slate-800 dark:text-white transition-all shadow-xs flex flex-col items-center justify-center gap-1.5 group text-center hover:-translate-y-0.5"
+                >
+                  <div className="w-8 h-8 rounded-xl bg-[#FFA116]/10 text-[#FFA116] flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <IconRenderer name="leetcode" className="w-4 h-4" />
+                  </div>
+                  <span className="text-[11px] font-mono font-semibold">LeetCode</span>
+                  <span className="text-[9px] font-mono text-slate-400 group-hover:text-[#FFA116] transition-colors truncate max-w-full px-1">
+                    xenonrocks_71 ↗
+                  </span>
+                </a>
+
+                {/* X (Twitter) */}
+                <a
+                  href={personalData.twitterUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-2xl bg-white/90 dark:bg-[#0d101a]/80 hover:bg-slate-50 dark:hover:bg-white/[0.05] border border-slate-200/90 dark:border-white/10 hover:border-slate-400/40 text-slate-800 dark:text-white transition-all shadow-xs flex flex-col items-center justify-center gap-1.5 group text-center hover:-translate-y-0.5"
+                >
+                  <div className="w-8 h-8 rounded-xl bg-slate-900/5 dark:bg-white/10 text-slate-900 dark:text-white flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <IconRenderer name="x" className="w-4 h-4" />
+                  </div>
+                  <span className="text-[11px] font-mono font-semibold">X (Twitter)</span>
+                  <span className="text-[9px] font-mono text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors truncate max-w-full px-1">
+                    @MayurPa... ↗
+                  </span>
+                </a>
+
+                {/* Instagram */}
+                <a
+                  href={personalData.instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-2xl bg-white/90 dark:bg-[#0d101a]/80 hover:bg-pink-50/60 dark:hover:bg-pink-950/20 border border-slate-200/90 dark:border-white/10 hover:border-pink-500/40 text-slate-800 dark:text-white transition-all shadow-xs flex flex-col items-center justify-center gap-1.5 group text-center hover:-translate-y-0.5"
+                >
+                  <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-amber-500/15 via-rose-500/15 to-purple-500/15 text-[#E4405F] flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <IconRenderer name="instagram" className="w-4 h-4" />
+                  </div>
+                  <span className="text-[11px] font-mono font-semibold">Instagram</span>
+                  <span className="text-[9px] font-mono text-slate-400 group-hover:text-[#E4405F] transition-colors truncate max-w-full px-1">
+                    @xenonrocks_71 ↗
+                  </span>
+                </a>
+
+                {/* Resume */}
+                <a
+                  href={personalData.resumeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-2xl bg-white/90 dark:bg-[#0d101a]/80 hover:bg-emerald-50/60 dark:hover:bg-emerald-950/20 border border-slate-200/90 dark:border-white/10 hover:border-emerald-500/40 text-slate-800 dark:text-white transition-all shadow-xs flex flex-col items-center justify-center gap-1.5 group text-center hover:-translate-y-0.5"
+                >
+                  <div className="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                  </div>
+                  <span className="text-[11px] font-mono font-semibold">Resume</span>
+                  <span className="text-[9px] font-mono text-slate-400 group-hover:text-emerald-500 transition-colors truncate max-w-full px-1">
+                    Drive PDF ↗
+                  </span>
+                </a>
+              </div>
             </div>
           </div>
 

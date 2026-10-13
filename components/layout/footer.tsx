@@ -20,7 +20,16 @@ export function Footer() {
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-mono">
+        <div className="flex flex-wrap items-center justify-center gap-3.5 text-xs font-mono">
+          <a
+            href={personalData.linkedinUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-slate-600 dark:text-white/60 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+          >
+            LinkedIn
+          </a>
+          <span>·</span>
           <a
             href={personalData.githubUrl}
             target="_blank"
@@ -31,17 +40,35 @@ export function Footer() {
           </a>
           <span>·</span>
           <a
-            href={personalData.linkedinUrl}
+            href={personalData.leetcodeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-slate-600 dark:text-white/60 hover:text-amber-500 transition-colors"
+          >
+            LeetCode
+          </a>
+          <span>·</span>
+          <a
+            href={personalData.twitterUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="text-slate-600 dark:text-white/60 hover:text-slate-950 dark:hover:text-white transition-colors"
           >
-            LinkedIn
+            X (Twitter)
+          </a>
+          <span>·</span>
+          <a
+            href={personalData.instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-slate-600 dark:text-white/60 hover:text-pink-500 transition-colors"
+          >
+            Instagram
           </a>
           <span>·</span>
           <a
             href={`mailto:${personalData.email}`}
-            className="text-slate-600 dark:text-white/60 hover:text-slate-950 dark:hover:text-white transition-colors"
+            className="text-slate-600 dark:text-white/60 hover:text-rose-500 transition-colors"
           >
             Email
           </a>
@@ -50,7 +77,7 @@ export function Footer() {
             href={personalData.resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-slate-600 dark:text-white/60 hover:text-slate-950 dark:hover:text-white transition-colors"
+            className="text-slate-600 dark:text-white/60 hover:text-emerald-500 transition-colors"
           >
             Resume
           </a>

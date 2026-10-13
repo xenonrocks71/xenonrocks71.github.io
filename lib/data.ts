@@ -21,6 +21,9 @@ export interface PersonalData {
   resumeUrl: string;
   githubUrl: string;
   linkedinUrl: string;
+  leetcodeUrl: string;
+  twitterUrl: string;
+  instagramUrl: string;
   email: string;
 }
 
@@ -187,8 +190,11 @@ export const personalData: PersonalData = {
   avatarUrl: "/portfolio-content/images/profile/profile.png",
   resumeUrl: "https://drive.google.com/file/d/18NY-bYco5AcR1ssWZmMsgMv2T7toTf-D/view?usp=drive_link",
   githubUrl: "https://github.com/xenonrocks71",
-  linkedinUrl: "https://www.linkedin.com/in/mayur-patil-414070200",
-  email: "mayurkpatil2006@gmail.com"
+  linkedinUrl: "https://www.linkedin.com/in/mayur-patil-414070200/",
+  leetcodeUrl: "https://leetcode.com/u/xenonrocks_71/",
+  twitterUrl: "https://x.com/MayurPa23149443",
+  instagramUrl: "https://www.instagram.com/xenonrocks_71/",
+  email: "mayurkp71@gmail.com"
 };
 
 export const projectsData: ProjectItem[] = [
