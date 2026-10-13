@@ -77,6 +77,14 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true
+  },
+  icons: {
+    icon: [
+      { url: "/portfolio-content/images/profile/profile.png", type: "image/png" },
+      { url: "/icon.png", type: "image/png" }
+    ],
+    shortcut: "/portfolio-content/images/profile/profile.png",
+    apple: "/portfolio-content/images/profile/profile.png"
   }
 };
 
@@ -88,6 +96,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} scroll-smooth dark`}>
       <head>
+        <link rel="icon" href="/portfolio-content/images/profile/profile.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/portfolio-content/images/profile/profile.png" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
