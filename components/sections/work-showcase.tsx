@@ -153,55 +153,6 @@ export const WorkShowcase: React.FC = () => {
           </p>
         </div>
 
-        {/* Futuristic Laser Data-Rail for Projects (Colorful and high-contrast in Light Mode) */}
-        <div className="hidden lg:block relative p-3 rounded-2xl bg-slate-100/70 dark:bg-white/[0.02] border border-slate-200/80 dark:border-white/10 backdrop-blur-md light-rail">
-          <div className="flex items-center justify-between px-3 text-xs font-mono font-semibold">
-            {projects.map((proj, idx) => (
-              <React.Fragment key={proj.id}>
-                <button
-                  type="button"
-                  onClick={() => setSelectedProject(proj)}
-                  className={`group flex items-center gap-2.5 transition-all text-left ${
-                    hoveredIdx === idx
-                      ? "text-slate-900 dark:text-white scale-105"
-                      : "text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-zinc-200"
-                  }`}
-                >
-                  <span
-                    className="w-2.5 h-2.5 rounded-full transition-all"
-                    style={{
-                      backgroundColor: proj.accentColor,
-                      boxShadow: `0 0 8px ${proj.accentColor}`,
-                    }}
-                  />
-                  <span>
-                    <strong className="text-slate-900 dark:text-white">{proj.indexNum}</strong> · {proj.id === "dbatu-results" ? "DBATU University" : proj.id === "atten-attendance" ? "Govt. Polytechnic" : proj.organization}
-                  </span>
-                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-200/60 dark:bg-white/10 text-slate-700 dark:text-zinc-300">
-                    {proj.metricValue}
-                  </span>
-                </button>
-
-                {idx < projects.length - 1 && (
-                  <div className="flex-1 mx-3 relative h-[2px] bg-slate-200 dark:bg-white/10 rounded-full overflow-hidden">
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-blue-500 via-cyan-400 to-amber-400"
-                      animate={{
-                        x: ["-100%", "100%"],
-                      }}
-                      transition={{
-                        repeat: Infinity,
-                        duration: 3.5,
-                        ease: "linear",
-                      }}
-                    />
-                  </div>
-                )}
-              </React.Fragment>
-            ))}
-          </div>
-        </div>
-
         {/* 4 Fancy Spotlight Cards in a Single Row on Desktop */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {projects.map((project, idx) => (
