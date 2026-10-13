@@ -1,0 +1,516 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root,
+html.dark {
+  --bg-page: #07080c;
+  --bg-surface: #0d0f17;
+  --bg-card: rgba(13, 15, 23, 0.75);
+  --bg-box: rgba(0, 0, 0, 0.45);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-card: rgba(255, 255, 255, 0.12);
+  --text-heading: #ffffff;
+  --text-body: #94a3b8;
+  --text-muted: #64748b;
+  --text-strong: #f8fafc;
+  --accent-electric: #3b82f6;
+  --accent-violet: #8b5cf6;
+  --accent-mint: #10b981;
+  --nav-bg: rgba(7, 8, 12, 0.85);
+  --nav-border: rgba(255, 255, 255, 0.12);
+}
+
+html.light {
+  --bg-page: #f1f5fa;
+  --bg-surface: #ffffff;
+  --bg-card: rgba(255, 255, 255, 0.95);
+  --bg-box: #e8eef8;
+  --border-subtle: #cbd5e1;
+  --border-card: #94a3b8;
+  --text-heading: #0f172a;
+  --text-body: #334155;
+  --text-muted: #64748b;
+  --text-strong: #0f172a;
+  --accent-electric: #2563eb;
+  --accent-violet: #7c3aed;
+  --accent-mint: #059669;
+  --nav-bg: rgba(255, 255, 255, 0.88);
+  --nav-border: rgba(203, 213, 225, 0.85);
+}
+
+/* Base Body Setup */
+body {
+  background-color: var(--bg-page);
+  color: var(--text-strong);
+  font-family: var(--font-space-grotesk), sans-serif;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Light mode rich ambient gradient mesh canvas (eliminates flat plain white) */
+html.light body {
+  background-color: #f1f5fa;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.09) 0px, transparent 55%),
+    radial-gradient(at 100% 12%, rgba(139, 92, 246, 0.08) 0px, transparent 50%),
+    radial-gradient(at 50% 38%, rgba(6, 182, 212, 0.07) 0px, transparent 55%),
+    radial-gradient(at 0% 70%, rgba(59, 130, 246, 0.08) 0px, transparent 55%),
+    radial-gradient(at 100% 95%, rgba(16, 185, 129, 0.07) 0px, transparent 55%);
+  background-attachment: fixed;
+}
+
+/* Scoped Light Mode Card & Rail Gradients - Strictly active ONLY when html has .light class */
+html.light .light-card-blue {
+  background: linear-gradient(135deg, rgba(239, 246, 255, 0.95) 0%, #ffffff 50%, rgba(239, 246, 255, 0.45) 100%) !important;
+}
+
+html.light .light-card-violet {
+  background: linear-gradient(135deg, rgba(245, 243, 255, 0.95) 0%, #ffffff 50%, rgba(245, 243, 255, 0.45) 100%) !important;
+}
+
+html.light .light-card-emerald {
+  background: linear-gradient(135deg, rgba(236, 253, 245, 0.95) 0%, #ffffff 50%, rgba(236, 253, 245, 0.45) 100%) !important;
+}
+
+html.light .light-card-amber {
+  background: linear-gradient(135deg, rgba(254, 243, 199, 0.95) 0%, #ffffff 50%, rgba(254, 243, 199, 0.45) 100%) !important;
+}
+
+html.light .light-card-cyan {
+  background: linear-gradient(135deg, rgba(236, 254, 255, 0.95) 0%, #ffffff 50%, rgba(236, 254, 255, 0.45) 100%) !important;
+}
+
+html.light .light-metric-blue {
+  background-color: rgba(239, 246, 255, 0.95) !important;
+  border-color: rgba(191, 219, 254, 0.9) !important;
+}
+
+html.light .light-metric-violet {
+  background-color: rgba(245, 243, 255, 0.95) !important;
+  border-color: rgba(221, 214, 254, 0.9) !important;
+}
+
+html.light .light-metric-emerald {
+  background-color: rgba(236, 253, 245, 0.95) !important;
+  border-color: rgba(167, 243, 208, 0.9) !important;
+}
+
+html.light .light-metric-amber {
+  background-color: rgba(254, 243, 199, 0.95) !important;
+  border-color: rgba(253, 230, 138, 0.9) !important;
+}
+
+html.light .light-metric-cyan {
+  background-color: rgba(236, 254, 255, 0.95) !important;
+  border-color: rgba(165, 243, 252, 0.9) !important;
+}
+
+html.light .light-rail {
+  background: linear-gradient(90deg, rgba(219, 234, 254, 0.75), rgba(224, 231, 255, 0.65), rgba(254, 243, 199, 0.75)) !important;
+  border-color: rgba(191, 219, 254, 0.8) !important;
+}
+
+
+/* Lenis Smooth Scroll Configuration */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Subtle Animated Grain Overlay */
+.grain-overlay {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+html.light .grain-overlay {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 0);
+}
+
+/* Glassmorphic Card Surface */
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border-card);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+html.dark .glass-card:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+html.light .glass-card:hover {
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Gradient Borders */
+.gradient-border-blue {
+  position: relative;
+  background: linear-gradient(to right, #3b82f6, #8b5cf6);
+  padding: 1px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-page);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-card);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-electric);
+}
+
+/* 3D Perspective Utilities */
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Pulse Beacon Animation */
+@keyframes beacon-pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+.animate-beacon {
+  animation: beacon-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Infinite Marquee */
+@keyframes marquee-left {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0%); }
+}
+
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: marquee-left 28s linear infinite;
+}
+
+.animate-marquee-right {
+  display: flex;
+  width: max-content;
+  animation: marquee-right 28s linear infinite;
+}
+
+.animate-marquee-left:hover,
+.animate-marquee-right:hover {
+  animation-play-state: paused;
+}
+
+/* No-scrollbar utility for horizontal scroll containers */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Rotating Orbital Rings */
+@keyframes spin-clockwise {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spin-counter {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-clockwise 22s linear infinite;
+}
+
+.animate-spin-reverse-slow {
+  animation: spin-counter 26s linear infinite;
+}
+
+.animate-orbit {
+  animation: spin-clockwise 10s linear infinite;
+}
+
+.animate-orbit-reverse {
+  animation: spin-counter 14s linear infinite;
+}
+
+/* Motion Reduction Respect */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =========================================================================
+   LIGHT THEME COMPLETE COMPATIBILITY ENGINE
+   ========================================================================= */
+html.light {
+  color-scheme: light;
+  --bg-page: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-card: #ffffff;
+  --border-card: #e2e8f0;
+  --text-heading: #0f172a;
+  --text-body: #475569;
+  --text-strong: #0f172a;
+}
+
+html.light body {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+/* Headings and Strong Texts */
+html.light h1,
+html.light h2,
+html.light h3,
+html.light h4,
+html.light .text-white {
+  color: #0f172a !important;
+}
+
+/* Secondary / Subtitle Texts */
+html.light .text-white\/90,
+html.light .text-white\/80 {
+  color: #1e293b !important;
+}
+
+html.light .text-white\/70,
+html.light .text-zinc-300 {
+  color: #334155 !important;
+}
+
+html.light .text-white\/60,
+html.light .text-white\/50,
+html.light .text-zinc-400 {
+  color: #475569 !important;
+}
+
+html.light .text-white\/40,
+html.light .text-zinc-500 {
+  color: #64748b !important;
+}
+
+/* Dark Card Backgrounds -> Crisp White Glass Cards with Soft Shadows */
+html.light [class*="bg-\[\#0c"],
+html.light [class*="bg-\[\#0d"],
+html.light [class*="bg-\[\#0e"],
+html.light [class*="bg-\[\#0f"],
+html.light [class*="bg-\[\#07"],
+html.light [class*="bg-\[\#08"],
+html.light [class*="bg-\[\#09"],
+html.light [class*="bg-\[\#0a"],
+html.light [class*="bg-\[\#10"],
+html.light [class*="bg-\[\#12"],
+html.light [class*="bg-\[\#14"],
+html.light [class*="bg-\[\#15"],
+html.light [class*="bg-\[\#1a"] {
+  background-color: #ffffff !important;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.04) !important;
+}
+
+/* Inner Module Tiles & Secondary Boxes */
+html.light .bg-white\/\[0\.02\],
+html.light .bg-white\/\[0\.03\],
+html.light .bg-white\/\[0\.04\],
+html.light .bg-white\/\[0\.05\],
+html.light .bg-white\/5 {
+  background-color: #f1f5f9 !important;
+  color: #1e293b !important;
+}
+
+html.light .bg-white\/10 {
+  background-color: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+
+html.light .bg-black\/40,
+html.light .bg-black\/50,
+html.light .bg-black\/60,
+html.light .bg-black\/80 {
+  background-color: #f8fafc !important;
+}
+
+/* Borders */
+html.light .border-white\/5,
+html.light .border-white\/10,
+html.light .border-white\/15,
+html.light .border-white\/20,
+html.light .border-white\/25,
+html.light .border-white\/30 {
+  border-color: #e2e8f0 !important;
+}
+
+/* Navbar in Light Mode */
+html.light nav {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08) !important;
+}
+
+html.light nav a {
+  color: #475569 !important;
+}
+
+html.light nav a:hover {
+  color: #0f172a !important;
+}
+
+/* Active Nav Pill */
+html.light nav [class*="bg-white\/"] {
+  background-color: #e2e8f0 !important;
+  border-color: #cbd5e1 !important;
+}
+
+/* Invert Monogram Brand Text */
+html.light nav .text-white {
+  color: #0f172a !important;
+}
+
+/* Blue & Indigo Buttons should keep high-contrast white text */
+html.light .bg-blue-600,
+html.light .bg-blue-600\/90,
+html.light [class*="bg-gradient-to-r from-blue-600"],
+html.light [class*="bg-gradient-to-br from-blue-600"],
+html.light [class*="bg-gradient-to-r from-amber-600"],
+html.light button[class*="bg-blue-600"],
+html.light a[class*="bg-blue-600"],
+html.light a[class*="bg-gradient-to-r from-blue-600"] {
+  color: #ffffff !important;
+}
+
+html.light .bg-blue-600 *,
+html.light [class*="bg-gradient-to-r from-blue-600"] * {
+  color: #ffffff !important;
+}
+
+/* Theme Toggle Button in Light Mode */
+html.light nav button[aria-label*="Switch to"] {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+/* Canvas & Graph Mesh in Light Mode */
+html.light canvas {
+  opacity: 0.3 !important;
+  filter: invert(0.85) hue-rotate(180deg);
+}
+
+/* Ambient radial glow in light mode */
+html.light [class*="blur-\[1"] {
+  opacity: 0.1 !important;
+}
+
+/* Custom Cursor in Light Mode */
+html.light #custom-cursor {
+  border-color: rgba(37, 99, 235, 0.8) !important;
+  color: #0f172a !important;
+}
+
+/* Footer in Light Mode */
+html.light footer {
+  background-color: #f1f5f9 !important;
+  border-color: #e2e8f0 !important;
+  color: #64748b !important;
+}
+
+html.light footer a {
+  color: #475569 !important;
+}
+
+html.light footer a:hover {
+  color: #0f172a !important;
+}
+
+html.light footer .text-white {
+  color: #0f172a !important;
+}
+
+/* Dialog / Modal Backdrop and Body in Light Mode */
+html.light [role="dialog"] {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+/* Skills section particle canvas — lighter treatment (no invert) */
+html.light .skills-particle-canvas {
+  opacity: 0.15 !important;
+  filter: none !important;
+}
+
+/* Invert dark-native CDN icons (GitHub, Next.js, SocketIO) for dark backgrounds */
+.dark img[alt="GitHub"],
+.dark img[alt="Next.js"],
+.dark img[alt="WebSockets"] {
+  filter: invert(1) brightness(2);
+}
+
+/* Scrollbar light mode override */
+html.light ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+html.light ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+}
+
+html.light ::-webkit-scrollbar-thumb:hover {
+  background: #2563eb;
+}
+
+
