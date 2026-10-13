@@ -60,7 +60,7 @@ export const Achievements: React.FC = () => {
                           : "bg-blue-500/15 text-blue-800 dark:text-blue-300 border-blue-500/30"
                       }`}
                     >
-                      <span>{isFirst ? "🥇" : isSecond ? "🥈" : "🎖️"}</span>
+                      <span>{isFirst ? "🥇" : isSecond ? "🥈" : item.place.includes("Lead") ? "🏛️" : "🎖️"}</span>
                       <span>{item.place}</span>
                     </span>
 
@@ -81,6 +81,20 @@ export const Achievements: React.FC = () => {
                   <p className="text-xs sm:text-sm text-slate-600 dark:text-white/70 leading-relaxed">
                     {item.details}
                   </p>
+
+                  {/* Skill Tags (e.g. Leadership & Management) */}
+                  {item.tags && item.tags.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      {item.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-amber-500/10 dark:bg-white/5 text-amber-800 dark:text-amber-300 border border-amber-500/20 dark:border-white/10 font-semibold"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
 
                 {/* Certificate Link if available */}

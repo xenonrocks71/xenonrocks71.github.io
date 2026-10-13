@@ -127,6 +127,7 @@ export interface AchievementItem {
   issuer: string;
   year: string;
   details: string;
+  tags?: string[];
   certificateUrl?: string;
 }
 
@@ -393,10 +394,10 @@ export const experienceData: ExperienceItem[] = [
     role: "Software Engineering Intern",
     period: "2022",
     location: "Nashik, Maharashtra",
-    badge: "Award Winner",
+    badge: "Internship Award Winner",
     certificateUrl: "https://drive.google.com/file/d/1lSfpOyPaXm8Xb-yJKqB4kBQ6jUvxhNfp/view?usp=drive_link",
     summary:
-      "Completed a software development internship focused on web application development using PHP and CodeIgniter with MySQL as the database, following MVC architecture.",
+      "Completed a software development internship focused on enterprise web application development using PHP and CodeIgniter with MySQL as the database, following MVC architecture.",
     modules: [
       {
         title: "Customer Relationship Management (CRM)",
@@ -426,36 +427,6 @@ export const experienceData: ExperienceItem[] = [
       "MySQL database design & queries",
       "CRUD operations & API integration",
       "System debugging workflows"
-    ]
-  },
-  {
-    id: "aces-lead",
-    company: "Association of Computer Engineering Students (ACES)",
-    companyType: "Departmental Technical Body · DBATU Lonere",
-    orgIcon: "🏛️",
-    role: "Technical Lead & Event Coordinator",
-    period: "2023 – Present",
-    location: "DBATU Lonere, Maharashtra",
-    badge: "Collegiate Leadership",
-    summary:
-      "Coordinating technical initiatives, student hackathons, and departmental portals within Computer Engineering.",
-    modules: [
-      {
-        title: "ACES Digital Event Portal",
-        description: "Engineered centralized registration and ticketing portal for college symposia.",
-        iconName: "web"
-      },
-      {
-        title: "Hackathon Coordination",
-        description: "Problem statement creation, technical mentorship, and participant judging pipelines.",
-        iconName: "dsa"
-      }
-    ],
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "PostgreSQL", "Git"],
-    learnings: [
-      "Technical mentorship in Git, C++, and DSA",
-      "Full-stack portal operations under high student traffic",
-      "Agile event execution and coordination"
     ]
   }
 ];
@@ -566,7 +537,18 @@ export const achievementsData: AchievementItem[] = [
     title: "Departmental Hackathon Organizer",
     issuer: "Department of Computer Science · DBATU",
     year: "2024",
-    details: "Led technical operations, judging pipelines, and platform management for collegiate hackathons."
+    details: "Led technical operations, judging pipelines, and platform management for collegiate hackathons.",
+    tags: ["Event Management", "Technical Operations"]
+  },
+  {
+    id: "aces-leadership",
+    place: "Technical Lead",
+    title: "ACES Technical Leadership & Event Coordination",
+    issuer: "Association of Computer Engineering Students (ACES) · DBATU",
+    year: "2023 – Present",
+    details:
+      "Headed technical operations and event coordination. Spearheaded collegiate hackathons, created the student symposium digital registration portal, and mentored 300+ junior students across Git, C++, and DSA fundamentals.",
+    tags: ["Leadership", "Management", "Team Coordination", "Technical Mentorship", "Event Operations"]
   }
 ];
 

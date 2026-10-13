@@ -63,29 +63,5 @@ export const experiencesData: ExperienceItem[] = [
       "API integration",
       "Debugging and application workflows"
     ]
-  },
-  {
-    id: "aces-lead",
-    role: "Technical Lead & Event Coordinator",
-    company: "Association of Computer Engineering Students (ACES)",
-    period: "2023 – Present",
-    location: "DBATU Lonere, Maharashtra",
-    type: "Leadership",
-    badge: "Collegiate Leadership",
-    summary:
-      "Coordinating technical initiatives and student hackathons within the Computer Engineering department.",
-    projectsContributed: [
-      {
-        title: "ACES Digital Event Portal",
-        description:
-          "Built and maintained the student event portal for registration, announcements, and scheduling during college technical symposia."
-      }
-    ],
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "PostgreSQL", "Git"],
-    keyLearnings: [
-      "Technical event management and hackathon coordination",
-      "Mentoring junior students in Git, C++, and DSA fundamentals",
-      "Full-stack portal development for college events"
-    ]
   }
 ];

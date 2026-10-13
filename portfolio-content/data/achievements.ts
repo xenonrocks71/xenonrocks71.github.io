@@ -51,5 +51,15 @@ export const achievementsData: AchievementItem[] = [
     description:
       "Coordinated technical operations, problem statements, and digital platform workflows for collegiate hackathons.",
     category: "Leadership"
+  },
+  {
+    id: "aces-leadership",
+    award: "Technical Lead",
+    title: "ACES Technical Leadership & Event Coordination",
+    issuer: "Association of Computer Engineering Students (ACES) · DBATU",
+    year: "2023 – Present",
+    description:
+      "Headed technical operations and collegiate event coordination. Organized hackathons, developed student event portals, and mentored 300+ students in Git, C++, and DSA.",
+    category: "Leadership"
   }
 ];

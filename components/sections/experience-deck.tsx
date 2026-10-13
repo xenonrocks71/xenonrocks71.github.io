@@ -1,220 +1,11 @@
 "use client";
 
-import React, { useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { experienceData, ExperienceItem } from "@/lib/data";
-import { IconRenderer } from "@/components/ui/icon-renderer";
-
-interface EnhancedExperience extends ExperienceItem {
-  indexNum: string;
-  categoryLabel: string;
-  metricLabel: string;
-  metricValue: string;
-  gaugePercent: number;
-  gaugeText: string;
-  accentColor: string;
-  glowColor: string;
-  borderColor: string;
-  scoreAccent: string;
-  badgeColor: string;
-  cardBg: string;
-  metricBg: string;
-}
+import React, { useRef, useState } from "react";
+import { motion } from "framer-motion";
+import { experienceData } from "@/lib/data";
 
 export const ExperienceDeck: React.FC = () => {
-  const [filterMode, setFilterMode] = useState<"all" | "sumago" | "aces">("all");
-  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
-
-  const enhancedExperiences: EnhancedExperience[] = [
-    {
-      ...experienceData[0], // Sumago
-      indexNum: "01",
-      categoryLabel: "INDUSTRY INTERNSHIP",
-      metricLabel: "DELIVERED SYSTEMS",
-      metricValue: "4 Core Modules",
-      gaugePercent: 100,
-      gaugeText: "100%",
-      accentColor: "rgb(59, 130, 246)",
-      glowColor: "rgba(59, 130, 246, 0.15)",
-      borderColor: "hover:border-blue-500/50 hover:shadow-blue-500/10",
-      scoreAccent: "from-blue-500 via-indigo-500 to-cyan-400",
-      badgeColor: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/25",
-      cardBg: "bg-white/95 dark:bg-[#0c0f18]/90 light-card-blue",
-      metricBg: "bg-slate-50/90 border-slate-200/70 dark:bg-white/[0.03] dark:border-white/5 light-metric-blue",
-    },
-    {
-      ...experienceData[1], // ACES
-      indexNum: "02",
-      categoryLabel: "COLLEGIATE LEADERSHIP",
-      metricLabel: "CAMPUS OUTREACH",
-      metricValue: "300+ Students",
-      gaugePercent: 96,
-      gaugeText: "96%",
-      accentColor: "rgb(139, 92, 246)",
-      glowColor: "rgba(139, 92, 246, 0.15)",
-      borderColor: "hover:border-violet-500/50 hover:shadow-violet-500/10",
-      scoreAccent: "from-violet-500 via-purple-500 to-fuchsia-400",
-      badgeColor: "bg-violet-500/10 text-violet-600 dark:text-violet-400 border-violet-500/25",
-      cardBg: "bg-white/95 dark:bg-[#0c0f18]/90 light-card-violet",
-      metricBg: "bg-slate-50/90 border-slate-200/70 dark:bg-white/[0.03] dark:border-white/5 light-metric-violet",
-    },
-  ];
-
-  const displayedExperiences =
-    filterMode === "all"
-      ? enhancedExperiences
-      : filterMode === "sumago"
-      ? [enhancedExperiences[0]]
-      : [enhancedExperiences[1]];
-
-  return (
-    <section
-      id="experience"
-      className="relative w-full py-10 sm:py-14 px-4 sm:px-6 lg:px-12 bg-transparent text-[var(--text-strong)] border-t border-slate-200/80 dark:border-white/5 overflow-hidden transition-colors duration-200"
-    >
-      {/* Dynamic Ambient Background Aura */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full bg-gradient-to-r from-blue-600/10 via-cyan-500/5 to-purple-600/10 blur-[150px] pointer-events-none" />
-
-      <div className="max-w-6xl mx-auto space-y-8 relative z-10">
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b border-slate-200 dark:border-white/10">
-          <div className="space-y-1.5">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 dark:bg-blue-500/15 border border-blue-500/20 text-blue-600 dark:text-blue-400 text-xs font-mono font-semibold">
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-ping" />
-              <span>WORK HISTORY</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-              Experience.
-            </h2>
-            <p className="text-xs sm:text-sm font-mono text-slate-600 dark:text-zinc-400 leading-relaxed">
-              Software engineering internship and collegiate technical leadership.
-            </p>
-          </div>
-
-          {/* Interactive Filter Pills */}
-          <div className="flex items-center gap-1.5 p-1 rounded-xl bg-slate-100/90 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 text-xs font-mono">
-            <button
-              type="button"
-              onClick={() => setFilterMode("all")}
-              className={`px-3 py-1.5 rounded-lg transition-all ${
-                filterMode === "all"
-                  ? "bg-white dark:bg-white/15 text-slate-900 dark:text-white font-bold shadow-xs"
-                  : "text-slate-500 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white"
-              }`}
-            >
-              All (2)
-            </button>
-            <button
-              type="button"
-              onClick={() => setFilterMode("sumago")}
-              className={`px-3 py-1.5 rounded-lg transition-all ${
-                filterMode === "sumago"
-                  ? "bg-white dark:bg-white/15 text-slate-900 dark:text-white font-bold shadow-xs"
-                  : "text-slate-500 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white"
-              }`}
-            >
-              01 · Sumago Intern
-            </button>
-            <button
-              type="button"
-              onClick={() => setFilterMode("aces")}
-              className={`px-3 py-1.5 rounded-lg transition-all ${
-                filterMode === "aces"
-                  ? "bg-white dark:bg-white/15 text-slate-900 dark:text-white font-bold shadow-xs"
-                  : "text-slate-500 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white"
-              }`}
-            >
-              02 · ACES Lead
-            </button>
-          </div>
-        </div>
-
-        {/* Futuristic Laser Data-Rail across Experiences */}
-        <div className="hidden md:block relative p-3 rounded-2xl bg-slate-100/70 dark:bg-white/[0.02] border border-slate-200/80 dark:border-white/10 backdrop-blur-md shadow-xs light-rail">
-          <div className="flex items-center justify-between px-4 text-xs font-mono font-semibold">
-            {enhancedExperiences.map((exp, idx) => (
-              <React.Fragment key={exp.id}>
-                <button
-                  type="button"
-                  onClick={() => setFilterMode(idx === 0 ? "sumago" : "aces")}
-                  className={`group flex items-center gap-2.5 transition-all text-left ${
-                    hoveredIdx === idx
-                      ? "text-slate-900 dark:text-white scale-105"
-                      : "text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-zinc-200"
-                  }`}
-                >
-                  <span
-                    className="w-2.5 h-2.5 rounded-full transition-all"
-                    style={{
-                      backgroundColor: exp.accentColor,
-                      boxShadow: `0 0 8px ${exp.accentColor}`,
-                    }}
-                  />
-                  <span>
-                    <strong className="text-slate-900 dark:text-white">{exp.indexNum}</strong> · {exp.company}
-                  </span>
-                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-200/60 dark:bg-white/10 text-slate-700 dark:text-zinc-300">
-                    {exp.metricValue}
-                  </span>
-                </button>
-
-                {idx < enhancedExperiences.length - 1 && (
-                  <div className="flex-1 mx-6 relative h-[2px] bg-slate-200 dark:bg-white/10 rounded-full overflow-hidden">
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-blue-500 via-indigo-400 to-violet-500"
-                      animate={{
-                        x: ["-100%", "100%"],
-                      }}
-                      transition={{
-                        repeat: Infinity,
-                        duration: 3,
-                        ease: "linear",
-                      }}
-                    />
-                  </div>
-                )}
-              </React.Fragment>
-            ))}
-          </div>
-        </div>
-
-        {/* Fancy Dual Experience Cockpit Grid (No automatic sliding) */}
-        <div
-          className={`grid gap-6 ${
-            displayedExperiences.length === 1 ? "grid-cols-1 max-w-3xl mx-auto" : "grid-cols-1 lg:grid-cols-2"
-          }`}
-        >
-          <AnimatePresence mode="popLayout">
-            {displayedExperiences.map((exp, idx) => (
-              <ExperienceCard
-                key={exp.id}
-                exp={exp}
-                idx={idx}
-                isHovered={hoveredIdx === idx}
-                onHover={() => setHoveredIdx(idx)}
-                onLeave={() => setHoveredIdx(null)}
-              />
-            ))}
-          </AnimatePresence>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-// ==========================================
-// EXPERIENCE COCKPIT CARD COMPONENT
-// ==========================================
-
-interface ExperienceCardProps {
-  exp: EnhancedExperience;
-  idx: number;
-  isHovered: boolean;
-  onHover: () => void;
-  onLeave: () => void;
-}
-
-const ExperienceCard: React.FC<ExperienceCardProps> = ({ exp, idx, isHovered, onHover, onLeave }) => {
+  const exp = experienceData[0]; // Sumago Infotech Pvt. Ltd. (Dominant Industry Experience)
   const cardRef = useRef<HTMLDivElement>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
@@ -227,208 +18,343 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ exp, idx, isHovered, on
     });
   };
 
-  // Circular gauge math (radius 24 -> circumference ~150.8)
-  const radius = 24;
-  const circumference = 2 * Math.PI * radius;
-  const strokeDashoffset = circumference - (circumference * exp.gaugePercent) / 100;
+  const projectsDelivered = [
+    {
+      id: "crm",
+      icon: "👥",
+      title: "Customer Relationship Management (CRM)",
+      category: "Enterprise System",
+      accent: "text-blue-600 dark:text-blue-400 bg-blue-500/10 border-blue-500/20",
+      description:
+        "Engineered end-to-end customer lead pipelines, sales stage workflows, and database CRUD operations for enterprise client relationship management.",
+      highlights: [
+        "Lead status pipeline and customer lifecycle transitions",
+        "Full CRUD operations with relational MySQL foreign keys",
+        "Role-based access for sales reps and administrators",
+      ],
+      technologies: ["PHP", "CodeIgniter", "MySQL", "JavaScript"],
+    },
+    {
+      id: "hospital-system",
+      icon: "🏥",
+      title: "Hospital Relationship System",
+      category: "Healthcare Portal",
+      accent: "text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border-emerald-500/20",
+      description:
+        "Built doctor-patient appointment scheduling logic, patient records, and relational database interactions for healthcare administration.",
+      highlights: [
+        "Doctor appointment booking and schedule conflict handling",
+        "Patient medical history lookup and relational indexing",
+        "Administrative dashboard for hospital staff workflows",
+      ],
+      technologies: ["PHP", "CodeIgniter", "MySQL", "MVC"],
+    },
+    {
+      id: "hospital-locator",
+      icon: "🗺️",
+      title: "Hospital Locator System",
+      category: "Geolocation Service",
+      accent: "text-amber-600 dark:text-amber-400 bg-amber-500/10 border-amber-500/20",
+      description:
+        "Integrated Google Maps JavaScript API for real-time location coordinate mapping, geolocation queries, and radius-based facility discovery.",
+      highlights: [
+        "Google Maps API integration with dynamic pin markers",
+        "Distance radius querying to locate nearest healthcare facilities",
+        "Interactive client-side coordinate lookup and mapping",
+      ],
+      technologies: ["Google Maps API", "JavaScript", "PHP", "MySQL"],
+    },
+    {
+      id: "pms",
+      icon: "📊",
+      title: "Project Management System",
+      category: "Workflow Engine",
+      accent: "text-violet-600 dark:text-violet-400 bg-violet-500/10 border-violet-500/20",
+      description:
+        "Developed task lifecycle management, status transition workflows, team assignments, and normalized MySQL schemas for project tracking.",
+      highlights: [
+        "Task lifecycle state machine (Backlog → In Progress → Review → Done)",
+        "Team member task allocation and progress tracking",
+        "Normalized database schemas with indexed query performance",
+      ],
+      technologies: ["PHP", "CodeIgniter", "MySQL", "MVC"],
+    },
+  ];
+
+  const impactAchievements = [
+    {
+      metric: "4 Modules",
+      label: "Production Systems Delivered",
+      description: "Full-cycle engineering from database design to controller logic & UI views.",
+      icon: "🚀",
+    },
+    {
+      metric: "100% MVC",
+      label: "CodeIgniter Architecture",
+      description: "Strict Model-View-Controller separation for maintainable, clean codebases.",
+      icon: "📐",
+    },
+    {
+      metric: "Live Geolocation",
+      label: "Google Maps Integration",
+      description: "Spatial coordinate mapping and radius searching for facility locators.",
+      icon: "📍",
+    },
+    {
+      metric: "ACID Compliant",
+      label: "MySQL Relational Schemas",
+      description: "Normalized relational schemas with indexed primary & composite keys.",
+      icon: "⚡",
+    },
+  ];
+
+  const technologiesUsed = [
+    "PHP",
+    "CodeIgniter (MVC)",
+    "MySQL",
+    "JavaScript",
+    "Google Maps API",
+    "REST APIs",
+    "HTML5 & CSS3",
+    "CRUD Architecture",
+    "Relational Schema Design",
+    "Apache Server",
+  ];
+
+  const coreLearnings = [
+    "Enterprise MVC web architecture patterns and controller routing",
+    "Relational database normalization, foreign-key constraints, and SQL joins",
+    "Third-party REST API & SDK integration (Google Maps JavaScript API)",
+    "Production debugging, error handling, and collaborative software delivery",
+  ];
 
   return (
-    <motion.div
-      ref={cardRef}
-      layout
-      onMouseMove={handleMouseMove}
-      onMouseEnter={onHover}
-      onMouseLeave={onLeave}
-      initial={{ opacity: 0, y: 24 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.95 }}
-      transition={{ duration: 0.4 }}
-      className={`group relative rounded-3xl ${exp.cardBg} border border-slate-200/90 dark:border-white/10 ${exp.borderColor} p-6 sm:p-8 shadow-lg dark:shadow-2xl hover:shadow-2xl transition-all duration-300 flex flex-col justify-between space-y-6 hover:-translate-y-1.5 backdrop-blur-xl overflow-hidden`}
+    <section
+      id="experience"
+      className="relative w-full py-10 sm:py-14 px-4 sm:px-6 lg:px-8 bg-transparent text-[var(--text-strong)] border-t border-slate-200/80 dark:border-white/5 overflow-hidden transition-colors duration-200"
     >
-      {/* Interactive Cursor Spotlight Glow */}
-      <div
-        className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"
-        style={{
-          background: `radial-gradient(400px circle at ${mousePos.x}px ${mousePos.y}px, ${exp.glowColor}, transparent 70%)`,
-        }}
-      />
+      {/* Dynamic Ambient Background Aura */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full bg-gradient-to-r from-blue-600/10 via-cyan-500/5 to-purple-600/10 blur-[150px] pointer-events-none" />
 
-      {/* Card Header & Content */}
-      <div className="space-y-5 relative z-10">
-        {/* Step Indicator & Role Tag */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="font-mono text-xs font-extrabold px-2.5 py-0.5 rounded-lg bg-black/5 dark:bg-white/10 text-slate-800 dark:text-white">
-              {exp.indexNum}
-            </span>
-            <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 dark:text-zinc-400 font-semibold">
-              {exp.categoryLabel}
-            </span>
+      <div className="max-w-6xl mx-auto space-y-8 relative z-10">
+        
+        {/* Section Header */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-2 border-b border-slate-200/70 dark:border-white/5">
+          <div className="space-y-1.5">
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold text-blue-600 dark:text-blue-400">
+              <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+              <span>INDUSTRY TRACK RECORD · SOFTWARE DEVELOPMENT</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black font-space-grotesk text-slate-900 dark:text-white tracking-tight">
+              Work Experience.
+            </h2>
           </div>
-
-          {exp.badge && (
-            <span className={`text-[10px] font-mono font-semibold px-2.5 py-0.5 rounded-full border ${exp.badgeColor}`}>
-              ★ {exp.badge}
-            </span>
-          )}
+          <p className="text-xs sm:text-sm font-mono text-slate-600 dark:text-zinc-400 max-w-md leading-relaxed">
+            Enterprise software development internship delivering production web applications and relational database systems.
+          </p>
         </div>
 
-        {/* DOMINANT HERO COMPANY / ORGANIZATION BLOCK - EYE CATCHER #1 */}
-        <div className="p-4 sm:p-5 rounded-2xl bg-slate-100/90 dark:bg-white/[0.04] border border-slate-200/90 dark:border-white/10 shadow-xs space-y-2 group-hover:border-blue-500/40 transition-all">
-          <div className="flex items-center justify-between gap-2">
-            <div className="flex items-center gap-1.5 text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
-              <span className="text-xs">{exp.orgIcon || (exp.id === "sumago-infotech" ? "🏢" : "🏛️")}</span>
-              <span>{exp.categoryLabel}</span>
+        {/* DOMINANT INDUSTRY EXPERIENCE MASTER CARD */}
+        <motion.div
+          ref={cardRef}
+          onMouseMove={handleMouseMove}
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5 }}
+          className="group relative rounded-3xl bg-white/95 dark:bg-[#0c0f18]/90 border border-slate-200/90 dark:border-white/10 hover:border-blue-500/50 p-6 sm:p-9 shadow-xl dark:shadow-2xl transition-all duration-300 space-y-8 backdrop-blur-xl overflow-hidden"
+        >
+          {/* Interactive Cursor Spotlight Glow */}
+          <div
+            className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"
+            style={{
+              background: `radial-gradient(550px circle at ${mousePos.x}px ${mousePos.y}px, rgba(59, 130, 246, 0.12), transparent 70%)`,
+            }}
+          />
+
+          {/* Master Card Top: DOMINANT COMPANY HERO BLOCK */}
+          <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-200/80 dark:border-white/10">
+            <div className="space-y-3">
+              <div className="flex items-center gap-2.5 flex-wrap">
+                <span className="text-2xl sm:text-3xl">🏢</span>
+                <span className="text-xs font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-lg bg-blue-500/10 text-blue-700 dark:text-blue-400 border border-blue-500/25">
+                  {exp.companyType}
+                </span>
+                <span className="text-xs font-mono font-semibold px-2.5 py-1 rounded-lg bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/25">
+                  ★ {exp.badge}
+                </span>
+              </div>
+
+              {/* Dominant Company Name (Eye Catcher #1) */}
+              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black font-space-grotesk tracking-tight text-slate-900 dark:text-white leading-tight">
+                {exp.company}
+              </h3>
+
+              <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm font-mono text-slate-600 dark:text-zinc-300">
+                <span className="font-bold text-blue-600 dark:text-blue-400">
+                  💼 {exp.role}
+                </span>
+                <span>•</span>
+                <span>📅 {exp.period}</span>
+                <span>•</span>
+                <span>📍 {exp.location}</span>
+              </div>
             </div>
-            <span className="text-[10px] font-mono text-slate-500 dark:text-zinc-400 font-medium">
-              📍 {exp.location}
-            </span>
-          </div>
-          <h3 className="text-2xl sm:text-3xl font-black font-space-grotesk tracking-tight text-slate-900 dark:text-white leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-            {exp.company}
-          </h3>
-          <div className="flex flex-wrap items-center gap-2 pt-0.5">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-blue-500/10 text-blue-700 dark:text-blue-300 border border-blue-500/20 text-xs sm:text-sm font-bold">
-              <span>💼</span>
-              <span>{exp.role}</span>
-            </div>
-            <span className="text-xs font-mono font-semibold text-slate-600 dark:text-zinc-400">
-              • {exp.period}
-            </span>
-            {exp.companyType && (
-              <span className="text-[11px] font-mono text-slate-500 dark:text-zinc-400 hidden sm:inline">
-                • {exp.companyType}
-              </span>
+
+            {/* Direct Certificate Link CTA */}
+            {exp.certificateUrl && (
+              <div className="shrink-0">
+                <a
+                  href={exp.certificateUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-mono font-bold shadow-lg shadow-blue-500/25 transition-all hover:scale-105 cursor-pointer"
+                >
+                  <span>View Verified Certificate</span>
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </div>
             )}
           </div>
-        </div>
 
-        {/* Circular Telemetry / Key Metric Banner */}
-        <div className={`p-3.5 rounded-2xl ${exp.metricBg} border flex items-center justify-between shadow-xs`}>
-          <div className="space-y-0.5">
-            <span className="text-[10px] font-mono text-slate-500 dark:text-zinc-400 uppercase tracking-wider block">
-              {exp.metricLabel}
-            </span>
-            <span className={`text-xl sm:text-2xl font-extrabold font-space-grotesk tracking-tight text-transparent bg-clip-text bg-gradient-to-r ${exp.scoreAccent}`}>
-              {exp.metricValue}
-            </span>
-            <span className="text-[11px] font-mono text-slate-500 dark:text-zinc-400 block">
-              Tenure: {exp.period} · {exp.location}
-            </span>
+          {/* Executive Overview Narrative */}
+          <div className="relative z-10 text-sm sm:text-base text-slate-700 dark:text-zinc-300 leading-relaxed max-w-4xl">
+            {exp.summary}
           </div>
 
-          {/* Precision SVG Ring Gauge */}
-          <div className="relative w-14 h-14 flex items-center justify-center shrink-0">
-            <svg className="w-14 h-14 -rotate-90 transform" viewBox="0 0 60 60">
-              <circle
-                cx="30"
-                cy="30"
-                r={radius}
-                className="stroke-slate-200 dark:stroke-white/10"
-                strokeWidth="4.5"
-                fill="transparent"
-              />
-              <motion.circle
-                cx="30"
-                cy="30"
-                r={radius}
-                stroke={exp.accentColor}
-                strokeWidth="4.5"
-                strokeDasharray={circumference}
-                initial={{ strokeDashoffset: circumference }}
-                whileInView={{ strokeDashoffset }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
-                strokeLinecap="round"
-                fill="transparent"
-              />
-            </svg>
-            <span className="absolute font-mono text-[10px] font-bold text-slate-700 dark:text-zinc-200">
-              {exp.gaugeText}
-            </span>
-          </div>
-        </div>
+          {/* KEY ACHIEVEMENTS & IMPACT TILES */}
+          <div className="relative z-10 space-y-3">
+            <h4 className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-zinc-400 font-bold flex items-center gap-1.5">
+              <span>🏆</span>
+              <span>Key Achievements & Deliverables During Internship</span>
+            </h4>
 
-        {/* Summary Description */}
-        <p className="text-xs sm:text-sm text-slate-600 dark:text-zinc-300 leading-relaxed font-sans">
-          {exp.summary}
-        </p>
-
-        {/* Delivered Systems & Modules Grid */}
-        <div className="space-y-2 pt-2 border-t border-slate-100 dark:border-white/5">
-          <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 dark:text-zinc-500 font-semibold block">
-            Delivered Modules & Key Initiatives
-          </span>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-            {exp.modules.map((mod, i) => (
-              <div
-                key={i}
-                className="p-3 rounded-xl bg-slate-50/80 dark:bg-white/[0.02] border border-slate-200/70 dark:border-white/5 hover:border-slate-300 dark:hover:border-white/15 transition-all space-y-1 group/mod"
-              >
-                <div className="flex items-center gap-1.5 text-slate-900 dark:text-white font-semibold text-xs group-hover/mod:text-blue-600 dark:group-hover/mod:text-blue-400 transition-colors">
-                  <IconRenderer name={mod.iconName} className="w-3.5 h-3.5 text-blue-500 shrink-0" />
-                  <span className="truncate">{mod.title}</span>
-                </div>
-                <p className="text-[11px] text-slate-500 dark:text-zinc-400 leading-snug line-clamp-2">
-                  {mod.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Engineering Learnings */}
-        {exp.learnings && exp.learnings.length > 0 && (
-          <div className="space-y-1.5 pt-2 border-t border-slate-100 dark:border-white/5">
-            <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 dark:text-zinc-500 font-semibold block">
-              Core Engineering Learnings
-            </span>
-            <div className="space-y-1">
-              {exp.learnings.slice(0, 3).map((learning, i) => (
-                <div key={i} className="flex items-center gap-2 text-xs text-slate-700 dark:text-zinc-200">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
-                  <span className="truncate">{learning}</span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+              {impactAchievements.map((ach, idx) => (
+                <div
+                  key={idx}
+                  className="p-4 rounded-2xl bg-slate-50/90 dark:bg-white/[0.03] border border-slate-200/80 dark:border-white/10 space-y-1.5 shadow-xs"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="text-lg">{ach.icon}</span>
+                    <span className="text-xs font-mono font-black text-blue-600 dark:text-blue-400">
+                      {ach.metric}
+                    </span>
+                  </div>
+                  <h5 className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">
+                    {ach.label}
+                  </h5>
+                  <p className="text-[11px] text-slate-600 dark:text-zinc-400 leading-relaxed">
+                    {ach.description}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
-        )}
-      </div>
 
-      {/* Card Footer: Technologies & Certificate Button */}
-      <div className="pt-4 border-t border-slate-100 dark:border-white/5 relative z-10 flex flex-wrap items-center justify-between gap-3">
-        {/* Technologies Pills */}
-        <div className="flex flex-wrap gap-1.5">
-          {exp.technologies.slice(0, 4).map((tech) => (
-            <span
-              key={tech}
-              className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-mono bg-slate-100 dark:bg-white/[0.04] text-slate-700 dark:text-zinc-300 border border-slate-200/80 dark:border-white/5"
-            >
-              <IconRenderer name={tech} size={11} className="w-2.5 h-2.5" />
-              <span>{tech}</span>
-            </span>
-          ))}
-          {exp.technologies.length > 4 && (
-            <span className="text-[9px] font-mono text-slate-400 dark:text-zinc-500 self-center pl-1 font-semibold">
-              +{exp.technologies.length - 4}
-            </span>
-          )}
-        </div>
+          {/* PROJECTS DELIVERED GRID (Dominantly Showcasing the 4 Assigned Systems) */}
+          <div className="relative z-10 space-y-4 pt-2">
+            <div className="flex items-center justify-between">
+              <h4 className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-zinc-400 font-bold flex items-center gap-1.5">
+                <span>💻</span>
+                <span>Production Projects & Modules Engineered</span>
+              </h4>
+              <span className="text-[11px] font-mono text-slate-500 dark:text-zinc-400">
+                4 End-to-End Enterprise Applications
+              </span>
+            </div>
 
-        {/* Certificate Proof Action Button */}
-        {exp.certificateUrl && (
-          <a
-            href={exp.certificateUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-500/10 hover:bg-blue-500/20 text-blue-600 dark:text-blue-400 border border-blue-500/25 text-xs font-mono font-semibold transition-all shadow-xs cursor-pointer active:scale-95 ml-auto"
-          >
-            <span>Verified Proof</span>
-            <span className="text-xs">↗</span>
-          </a>
-        )}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {projectsDelivered.map((proj) => (
+                <div
+                  key={proj.id}
+                  className="p-5 rounded-2xl bg-slate-100/70 dark:bg-white/[0.02] border border-slate-200/90 dark:border-white/10 hover:border-blue-500/40 transition-all space-y-3.5 flex flex-col justify-between"
+                >
+                  <div className="space-y-2.5">
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xl">{proj.icon}</span>
+                        <h5 className="text-base font-bold text-slate-900 dark:text-white">
+                          {proj.title}
+                        </h5>
+                      </div>
+                      <span className={`text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-md border ${proj.accent}`}>
+                        {proj.category}
+                      </span>
+                    </div>
+
+                    <p className="text-xs text-slate-600 dark:text-zinc-300 leading-relaxed">
+                      {proj.description}
+                    </p>
+
+                    <div className="space-y-1 pt-1">
+                      {proj.highlights.map((h, i) => (
+                        <div key={i} className="flex items-start gap-2 text-[11px] text-slate-700 dark:text-zinc-300">
+                          <span className="text-blue-500 font-bold">✓</span>
+                          <span>{h}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap gap-1.5 pt-2 border-t border-slate-200/60 dark:border-white/5">
+                    {proj.technologies.map((t) => (
+                      <span
+                        key={t}
+                        className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-white dark:bg-white/5 text-slate-700 dark:text-zinc-300 border border-slate-200 dark:border-white/10 font-semibold"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* TECHNOLOGIES WORKED ON (Interactive Stack Ecosystem) */}
+          <div className="relative z-10 space-y-3 pt-2">
+            <h4 className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-zinc-400 font-bold flex items-center gap-1.5">
+              <span>⚡</span>
+              <span>Technologies & Engineering Stack Applied</span>
+            </h4>
+
+            <div className="flex flex-wrap gap-2">
+              {technologiesUsed.map((tech) => (
+                <span
+                  key={tech}
+                  className="text-xs font-mono font-semibold px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-white/5 text-slate-800 dark:text-zinc-200 border border-slate-200 dark:border-white/10 shadow-2xs hover:border-blue-500/40 transition-colors"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* CORE ENGINEERING LEARNINGS */}
+          <div className="relative z-10 space-y-3 pt-2 border-t border-slate-200/70 dark:border-white/10">
+            <h4 className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-zinc-400 font-bold flex items-center gap-1.5">
+              <span>🎯</span>
+              <span>Practical Software Engineering Takeaways</span>
+            </h4>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              {coreLearnings.map((learning, idx) => (
+                <div
+                  key={idx}
+                  className="p-3 rounded-xl bg-slate-50 dark:bg-white/[0.02] border border-slate-200/60 dark:border-white/5 text-xs text-slate-700 dark:text-zinc-300 flex items-center gap-2.5 font-medium"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0" />
+                  <span>{learning}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </motion.div>
       </div>
-    </motion.div>
+    </section>
   );
 };
-
