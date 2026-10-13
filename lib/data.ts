@@ -380,21 +380,6 @@ export const journeyMilestones: JourneyMilestone[] = [
     skillsGained: ["C & C++", "Java & Android", "Relational SQL", "OOP Foundations"],
     description:
       "Where my programming foundation was forged through hands-on system building, competitive SQL querying, and winning state-level project exhibitions."
-  },
-  {
-    year: "2020",
-    period: "Class X",
-    level: "Level 03",
-    title: "Secondary School Certificate (SSC)",
-    institution: "N. P. Patil Vidyalaya",
-    institutionType: "Maharashtra State Board of Secondary Education",
-    location: "Jalgaon, Maharashtra",
-    score: "92.40%",
-    scoreType: "Percentage",
-    badge: "Academic Distinction",
-    skillsGained: ["Mathematics", "Sciences", "Analytical Foundations"],
-    description:
-      "Completed secondary education with top honors, building the quantitative discipline and curiosity that led to computer engineering."
   }
 ];
 

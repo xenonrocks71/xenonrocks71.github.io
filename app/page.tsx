@@ -1,8 +1,7 @@
 import { Navbar } from "@/components/layout/navbar";
 import { Hero } from "@/components/sections/hero";
-import { WhoIAm } from "@/components/sections/who-i-am";
+import { About } from "@/components/sections/about";
 import { WorkShowcase } from "@/components/sections/work-showcase";
-import { JourneyRoadmap } from "@/components/sections/journey-roadmap";
 import { ExperienceDeck } from "@/components/sections/experience-deck";
 import { SkillsMatrix } from "@/components/sections/skills-matrix";
 import { Achievements } from "@/components/sections/achievements";
@@ -23,16 +22,13 @@ export default function Home() {
         {/* 2. Kinetic Hero: Who is Mayur? */}
         <Hero />
 
-        {/* 3. Who I Am: 3D Interactive Flip Identity Cards */}
-        <WhoIAm />
+        {/* 3. About: Engineering Profile & Prominent Formal Education */}
+        <About />
 
         {/* 4. Work Showcase: Pinned Horizontal Scrub + Live SVG Topology + Modals */}
         <WorkShowcase />
 
-        {/* 5. Engineering Journey: Animated Scroll-Drawn SVG Roadmap */}
-        <JourneyRoadmap />
-
-        {/* 6. Work Experience: Interactive Sticky Card Deck */}
+        {/* 5. Work Experience: Interactive Sticky Card Deck */}
         <ExperienceDeck />
 
         {/* 7. Technical Skills & Ecosystem: Dual Marquees + Filter Matrix */}

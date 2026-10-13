@@ -9,7 +9,6 @@ const NAV_ITEMS = [
   { name: "Home", href: "#hero", id: "hero" },
   { name: "About", href: "#about", id: "about" },
   { name: "Projects", href: "#projects", id: "projects" },
-  { name: "Education", href: "#education", id: "education" },
   { name: "Experience", href: "#experience", id: "experience" },
   { name: "Skills", href: "#skills", id: "skills" },
   { name: "Achievements", href: "#achievements", id: "achievements" },

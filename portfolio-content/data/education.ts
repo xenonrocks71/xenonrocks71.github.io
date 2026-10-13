@@ -13,28 +13,6 @@ export interface JourneyStage {
 
 export const journeyData: JourneyStage[] = [
   {
-    year: "2020",
-    stageTitle: "Secondary School Certificate (SSC)",
-    institution: "N. P. Patil Vidyalaya",
-    location: "Jalgaon, Maharashtra",
-    score: "92.40%",
-    scoreType: "Percentage",
-    description: "Completed secondary school education with academic distinction and strong foundations in mathematics and science."
-  },
-  {
-    year: "2021 – 2023",
-    stageTitle: "Diploma in Computer Engineering",
-    institution: "Government Polytechnic, Jalgaon",
-    location: "Jalgaon, Maharashtra",
-    score: "85.09%",
-    scoreType: "Aggregate",
-    websiteUrl: "http://gpjalgaon.org.in/",
-    badge: "First Class with Distinction",
-    description:
-      "Where I developed my early foundation in programming, software development, relational databases, and practical group engineering projects like 'Atten' (1st Prize State-Level Exhibition).",
-    focusAreas: ["C & C++ Programming", "Java", "Relational Databases", "Android Development", "Software Engineering Basics"]
-  },
-  {
     year: "2024 – 2027",
     stageTitle: "B.Tech in Computer Engineering",
     institution: "Dr. Babasaheb Ambedkar Technological University (DBATU)",
@@ -53,6 +31,19 @@ export const journeyData: JourneyStage[] = [
       "AI / GenAI Applications",
       "System Design"
     ]
+  },
+  {
+    year: "2021 – 2023",
+    stageTitle: "Diploma in Computer Engineering",
+    institution: "Government Polytechnic, Jalgaon",
+    location: "Jalgaon, Maharashtra",
+    score: "85.09%",
+    scoreType: "Aggregate",
+    websiteUrl: "http://gpjalgaon.org.in/",
+    badge: "First Class with Distinction",
+    description:
+      "Where I developed my early foundation in programming, software development, relational databases, and practical group engineering projects like 'Atten' (1st Prize State-Level Exhibition).",
+    focusAreas: ["C & C++ Programming", "Java", "Relational Databases", "Android Development", "Software Engineering Basics"]
   }
 ];
 
